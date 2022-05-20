@@ -9,3 +9,4 @@ const routes: Routes = [{ path: '', component: ProductsComponent }];
   exports: [RouterModule]
 })
 export class ProductsRoutingModule { }
+
