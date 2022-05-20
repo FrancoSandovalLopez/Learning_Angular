@@ -12,6 +12,7 @@ Frontend for a store website (Backend in develop).
 ## Technologies used for Backend:
 - Spring Boot
 - Java
-- MicroServices ( Maybe!)
+- MicroServices ( Maybe! )
+- NodeJs ( Probably ? )
 
  
