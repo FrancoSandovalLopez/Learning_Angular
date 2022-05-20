@@ -1,5 +1,6 @@
 # **Angular_Store**
-Frontend for a store website (Backend in develop).
+Web Page created with Angular as Frontend.
+For Backend well.. we will see...
 
 ## Technologies used for Frontend:
 - Angular 13
