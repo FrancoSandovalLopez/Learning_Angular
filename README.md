@@ -11,9 +11,9 @@ For Backend well.. we will see...
 - JavaScript (If i'm lazzy and i can't do it with TypeScript)
 
 ## Technologies used for Backend:
-- Spring Boot
-- Java
-- MicroServices ( Maybe! )
+- Spring Boot ( Probably ? )
 - NodeJs ( Probably ? )
+- .NET Core ( Probably ? )
+- Python ( Probably ? )
 
  
