@@ -9,14 +9,16 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './views/login/login.component';
+import { CartComponent } from './shared/components/cart/cart.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    LoginComponent
+    CartComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import { LoginComponent } from './views/login/login.component';
     FormsModule,
     BrowserAnimationsModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

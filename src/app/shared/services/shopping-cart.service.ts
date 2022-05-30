@@ -7,7 +7,8 @@ import { Product } from 'src/app/views/products/interfaces/product.interface';
 })
 export class ShoppingCartService {
   products: Product[] = [];
-
+  /* In TypeScript an Observable is like a List */
+  
   private cartSubject = new Subject<Product[]>();
   private totalSubject = new Subject<number>();
   private quantitySubject = new Subject<number>();
