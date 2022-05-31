@@ -13,6 +13,6 @@ import { CartComponent } from './components/cart/cart.component';
     CommonModule,
     MaterialModule
   ],
-  exports: [HeaderComponent, FooterComponent, CartComponent]
+  exports: [ HeaderComponent, FooterComponent, CartComponent ]
 })
 export class SharedModule { }
