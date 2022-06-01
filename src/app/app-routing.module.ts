@@ -3,6 +3,7 @@ import { ProductsComponent } from './views/products/products.component';
 import { LayoutComponent } from './layouts/layout.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './views/login/login.component';
 
 const routes: Routes = [
   { 
@@ -14,6 +15,10 @@ const routes: Routes = [
         loadChildren: () => import('./views/products/products.module').then(m => m.ProductsModule),
       }
     ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   { 
     path: '**', 
