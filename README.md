@@ -8,8 +8,8 @@ For Backend well.. we will see...
 - TypeScript 
 
 ## Technologies used for Backend:
-- Spring Boot ( Probably ? )
-- NodeJs ( Probably ? )
+- Spring Boot
+- MongoDB
 
 
  
