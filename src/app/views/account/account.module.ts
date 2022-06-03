@@ -1,24 +1,29 @@
+import { AccountRoutingModule } from './account-routing.module';
+import { MaterialModule } from './../../material/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { AccountRoutingModule } from './account-routing.module';
 import { RegisterComponent } from './register/register.component';
-import { LayoutComponent } from './layout/layout.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { LayoutLoginComponent } from './layout-login/layout-login.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [
     RegisterComponent,
-    LayoutComponent,
-    LoginComponent
+    LoginComponent,
+    LayoutLoginComponent
   ],
   imports: [
     CommonModule,
-    AccountRoutingModule,
-    ReactiveFormsModule,
+    RouterModule,
+    MaterialModule,
     AccountRoutingModule
+  ],
+  exports: [
+    RegisterComponent,
+    LoginComponent,
+    LayoutLoginComponent
   ]
 })
 export class AccountModule { }
