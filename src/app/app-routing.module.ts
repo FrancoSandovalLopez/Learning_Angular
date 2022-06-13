@@ -6,27 +6,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { 
-    path: 'Home', 
+    /* Redirect to layout  */
+    path: '', 
     component: LayoutComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./views/products/products.module').then(m => m.ProductsModule),
-      }
-    ]
-  }
-  ,
+    loadChildren: () => import('./layouts/layout.module').then(m => m.LayoutModule)
+  },
   {
-    path: 'Account',
-    component: LayoutLoginComponent,
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./views/account/account.module').then(x => x.AccountModule)
-      }
-    ]
+    /* Redirect to login on page loading by default  */
+    path: '',
+    pathMatch: 'full',
+    redirectTo: ''
   },
   { 
+    /* Redirect to a 404 page when path isn't valid */
     path: '**', 
     redirectTo: '',
     pathMatch: 'full'

@@ -4,26 +4,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { LayoutLoginComponent } from './layout-login/layout-login.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     RegisterComponent,
-    LoginComponent,
-    LayoutLoginComponent
+    LoginComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     MaterialModule,
-    AccountRoutingModule
-  ],
-  exports: [
-    RegisterComponent,
-    LoginComponent,
-    LayoutLoginComponent
+    AccountRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class AccountModule { }

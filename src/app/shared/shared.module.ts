@@ -10,7 +10,12 @@ import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, CartComponent, CategoryProductsButtonComponent],
+  declarations: [
+    HeaderComponent, 
+    FooterComponent, 
+    CartComponent, 
+    CategoryProductsButtonComponent
+  ],
   imports: [
     CommonModule,
     MaterialModule,
