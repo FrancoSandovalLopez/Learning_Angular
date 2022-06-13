@@ -9,7 +9,7 @@ For Backend well.. we will see...
 
 ## Technologies used for Backend:
 - Spring Boot
-- MongoDB
+- MySql
 
 
  
