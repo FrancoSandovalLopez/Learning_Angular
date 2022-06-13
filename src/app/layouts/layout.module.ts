@@ -1,28 +1,28 @@
-import { ProductComponent } from './../views/products/product/product.component';
-import { ProductsComponent } from './../views/products/products.component';
+import { ColletionsModule } from './../views/collections/colletions.module';
+import { AccountModule } from './../views/account/account.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    LayoutComponent,
-    ProductsComponent,
-    ProductComponent
+      LayoutComponent
     ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule, 
+    AccountModule,
+    ColletionsModule
   ],
   exports: [
-    //ProductsComponent
   ]
 })
 export class LayoutModule { }
