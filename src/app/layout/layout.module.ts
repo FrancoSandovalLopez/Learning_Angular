@@ -1,5 +1,5 @@
-import { ColletionsModule } from './../views/collections/colletions.module';
-import { AccountModule } from './../views/account/account.module';
+import { ColletionsModule } from '../views/collections/colletions.module';
+import { AccountModule } from '../views/account/account.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout.component';
