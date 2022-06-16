@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User, UserResponse } from '@app/shared/models/user.interface';
-import { Console } from 'console';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -11,11 +10,20 @@ import { environment } from 'src/environments/environment';
 })
 
 export class AuthService {
+
+  private headers = {'content-type': 'application/json'}
+
   constructor(private http: HttpClient) { }
-  
+
   login(authData: User):Observable<UserResponse | void>{
+
+    const body = {
+      email: authData.email,
+      password: authData.password
+    }
+
     return this.http
-    .post<UserResponse>(`${environment.API_URL}/auth/login`, authData)
+    .post<any>(`${environment.API_URL}/auth/login`, JSON.stringify(body), {'headers': this.headers})
     .pipe(
       map( (res:UserResponse) => {
         console.log('RES ->', res);
@@ -23,9 +31,10 @@ export class AuthService {
       catchError((err) => this.handleError(err))
     );
   }
+
   logout():void{}
   private readToken(): void{}
-  private sabeToken(): void{}
+  private saveToken(): void{}
   private handleError(err: any): Observable<never>{
    let errorMessage = 'An error ocurrend while retrienving data';
    if(err)

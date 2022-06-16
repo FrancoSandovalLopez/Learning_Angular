@@ -1,15 +1,15 @@
-import { LayoutLoginComponent } from './views/account/layout-login/layout-login.component';
-import { LayoutComponent } from './layouts/layout.component';
+
+import { LayoutComponent } from './layout/layout.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
 const routes: Routes = [
-  { 
+  {
     /* Redirect to layout  */
-    path: '', 
+    path: '',
     component: LayoutComponent,
-    loadChildren: () => import('./layouts/layout.module').then(m => m.LayoutModule)
+    loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule)
   },
   {
     /* Redirect to login on page loading by default  */
@@ -17,9 +17,9 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: ''
   },
-  { 
+  {
     /* Redirect to a 404 page when path isn't valid */
-    path: '**', 
+    path: '**',
     redirectTo: '',
     pathMatch: 'full'
   }

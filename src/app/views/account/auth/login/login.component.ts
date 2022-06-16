@@ -12,24 +12,48 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   form = new FormGroup({
-    email: new FormControl('',[Validators.required, Validators.maxLength(50)]),
-    password: new FormControl('',[Validators.required, Validators.minLength(10) ,Validators.maxLength(50)]),
+    email: new FormControl('',[
+      Validators.required,
+      Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
+      Validators.maxLength(50)
+    ]),
+    password: new FormControl('',[
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(50)
+    ]),
   });
 
-  constructor(private router: Router,private accountSvc: AuthService) { }
+  constructor(private router: Router,private authSvc: AuthService) {
+
+  }
 
   @Input() user!: User;
 
   @Output() submitEM = new EventEmitter<User>();
 
   ngOnInit(): void {
+
+
+    //this.authSvc.login(userData).subscribe(res => console.log('Login'));
   }
 
   submit() {
     if (this.form.valid) {
-      // console.log(this.form.value.username)
-      // this.submitEM.emit(this.form.value);
-    
+      const userData = {
+        email: this.email?.value,
+        password: this.password?.value
+      }
+
+      this.authSvc.login(userData).subscribe(res => console.log('Login'));
     }
+  }
+
+  get email(){
+    return this.form.get('email');
+  }
+
+  get password(){
+    return this.form.get('password');
   }
 }
