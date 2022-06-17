@@ -11,4 +11,7 @@ export interface UserResponse {
     lastName: string;
     email: string;
     phone: number;
+    token: string;
+    valid: boolean;
+    profile: number;
 }
