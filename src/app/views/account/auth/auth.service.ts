@@ -4,7 +4,8 @@ import { User, UserResponse } from '@app/shared/models/user.interface';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
 
 const helper = new JwtHelperService();
 
@@ -15,7 +16,7 @@ export class AuthService {
   private loggedId = new BehaviorSubject<boolean>(false);
   private headers = { 'content-type': 'application/json' };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.checkToken();
   }
 
@@ -37,7 +38,7 @@ export class AuthService {
         map((res: UserResponse) => {
           //console.log('RES ->', res);
           this.saveToken(res.token);
-          this.loggedId.next(true);
+          //this.loggedId.next(true);
           return res;
         }),
         catchError((err) => this.handleError(err))
@@ -62,7 +63,8 @@ export class AuthService {
   }
 
   private saveToken(token: string): void {
-    localStorage.setItem('token', token);
+    localStorage.setItem('token', JSON.stringify(token));
+    localStorage.setItem('token', 'JWT');
   }
 
   private handleError(err: any): Observable<never> {
