@@ -1,17 +1,13 @@
 export interface User {
     email: string;
     password: string;
+    id_role: number;
 }
 
-export interface UserResponse {
-    id: number;
-    run: number;
-    password: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: number;
-    token: string;
-    valid: boolean;
-    profile: number;
+
+export interface UserResponse{
+  email: string;
+  token: string;
+  id_role: number;
+  id_client: number;
 }
