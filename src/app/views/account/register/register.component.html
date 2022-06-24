@@ -33,16 +33,6 @@
             />
           </mat-form-field>
         </p>
-        <p>
-          <mat-form-field>
-            <mat-label>Choose a role...</mat-label>
-            <mat-select formControlName="roles">
-              <mat-option [value]="roles" *ngFor="let roles of Roles"
-                >{{ roles }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </p>
         <div class="button">
           <button mat-stroked-button color="accent" class="btn-block">
             Register

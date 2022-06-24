@@ -20,7 +20,7 @@ export class AuthService {
     this.checkToken();
   }
 
-  get isLgged(): Observable<boolean> {
+  get isLogged(): Observable<boolean> {
     return this.loggedId.asObservable();
   }
 
@@ -38,7 +38,7 @@ export class AuthService {
         map((res: UserResponse) => {
           //console.log('RES ->', res);
           this.saveToken(res.token);
-          //this.loggedId.next(true);
+          this.loggedId.next(true);
           return res;
         }),
         catchError((err) => this.handleError(err))
@@ -52,7 +52,7 @@ export class AuthService {
   }
 
   private checkToken(): void {
-    const userToken = JSON.parse(localStorage.getItem('token') || '{}');
+    const userToken = JSON.parse(localStorage.getItem('token')!);
     /*
      * IF ISTOKENEXPIRED() RETURN TRUE
      * THAT MEANS THAT THE USER HAS LOGOUT
@@ -63,8 +63,7 @@ export class AuthService {
   }
 
   private saveToken(token: string): void {
-    localStorage.setItem('token', JSON.stringify(token));
-    localStorage.setItem('token', 'JWT');
+    localStorage.setItem('token', token);
   }
 
   private handleError(err: any): Observable<never> {
