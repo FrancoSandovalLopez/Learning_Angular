@@ -1,5 +1,5 @@
 import { User, UserResponse } from '@shared/models/user.interface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -15,6 +15,15 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   registerUser(data: User){
+
+    let HTTPOptions:Object = {
+
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+      }),
+      responseType: 'text'
+   }
+
     const body = {
       email: data.email,
       password: data.password,
@@ -22,11 +31,9 @@ export class UserService {
     };
 
     return this.http
-      .post<any>(`${environment.API_URL}/user/createUser`, JSON.stringify(body), {
-        headers: this.headers,
-      })
+      .post<any>(`${environment.API_URL}/user/createUser`, JSON.stringify(body), HTTPOptions)
       .pipe(
-        map((res: String) => {
+        map((res: any) => {
           return res;
         }),
         catchError((err) => this.handleError(err))

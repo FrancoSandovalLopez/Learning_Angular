@@ -6,20 +6,12 @@
         <p>
           <mat-form-field>
             <input
-              type="text"
-              placeholder="Username"
-              matInput
-              formControlName="username"
-            />
-          </mat-form-field>
-        </p>
-        <p>
-          <mat-form-field>
-            <input
-              matInput
-              placeholder="Email"
               type="email"
+              placeholder="Email"
+              matInput
               formControlName="email"
+              id="email"
+              name="email"
             />
           </mat-form-field>
         </p>
@@ -30,6 +22,20 @@
               placeholder="Password"
               type="password"
               formControlName="password"
+              id="password"
+              name="password"
+            />
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field>
+            <input
+              matInput
+              placeholder="Repeat Password"
+              type="password"
+              formControlName="Rpassword"
+              id="Rpassword"
+              name="Rpassword"
             />
           </mat-form-field>
         </p>

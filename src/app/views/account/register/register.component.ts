@@ -13,10 +13,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
     email: new FormControl(''),
-    roles: new FormControl(''),
+    password: new FormControl(''),
+    Rpassword: new FormControl(''),
   });
 
   //Roles: any = ['Admin','Author', 'Reader']
@@ -25,7 +24,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authSvc: UserService,
+    private userSvc: UserService,
     private rolesSvc: RolesService
   ) {}
 
@@ -34,7 +33,7 @@ export class RegisterComponent implements OnInit {
   @Output() submitEM = new EventEmitter();
 
   ngOnInit(): void {
-    this.loadRoles();
+    //this.loadRoles();
   }
 
   submit() {
@@ -44,8 +43,10 @@ export class RegisterComponent implements OnInit {
         password: this.password?.value,
         id_role: 0,
       };
-      console.log(this.form.value);
-      this.submitEM.emit(this.form.value);
+      //console.log(this.form.value);
+      //this.submitEM.emit(this.form.value);
+
+      this.userSvc.registerUser(userData).subscribe((res: any) => console.log(res));
     }
   }
 
@@ -55,6 +56,10 @@ export class RegisterComponent implements OnInit {
 
   get password() {
     return this.form.get('password');
+  }
+
+  get Rpassword(){
+    return this.form.get('Rpassword');
   }
 
   loadRoles(){
