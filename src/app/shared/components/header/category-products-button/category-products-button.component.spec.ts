@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CategoryProductsButtonComponent } from './category-products-button.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 describe('CategoryProductsButtonComponent', () => {
   let component: CategoryProductsButtonComponent;
@@ -8,7 +9,10 @@ describe('CategoryProductsButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CategoryProductsButtonComponent ]
+      declarations: [ CategoryProductsButtonComponent ],
+      imports: [
+        MatMenuModule
+      ]
     })
     .compileComponents();
   });

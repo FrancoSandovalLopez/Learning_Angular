@@ -11,9 +11,9 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    HeaderComponent, 
-    FooterComponent, 
-    CartComponent, 
+    HeaderComponent,
+    FooterComponent,
+    CartComponent,
     CategoryProductsButtonComponent
   ],
   imports: [
