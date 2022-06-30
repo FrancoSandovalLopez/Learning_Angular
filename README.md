@@ -6,6 +6,7 @@ For Backend well.. we will see...
 - Angular 13
 - Angular Materials
 - TypeScript 
+- Storybook 
 
 ## Technologies used for Backend:
 - Spring Boot
