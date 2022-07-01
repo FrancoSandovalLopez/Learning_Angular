@@ -42,8 +42,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       const userData = {
         email: this.email?.value,
-        password: this.password?.value,
-        id_role: 0
+        password: this.password?.value
       }
 
       this.authSvc.login(userData).subscribe(res => console.log('Login'));

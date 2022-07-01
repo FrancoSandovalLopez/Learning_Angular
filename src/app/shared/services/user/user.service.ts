@@ -26,8 +26,7 @@ export class UserService {
 
     const body = {
       email: data.email,
-      password: data.password,
-      id_role: data.id_role
+      password: data.password
     };
 
     return this.http
