@@ -103,12 +103,12 @@
         },
         {
             "name": "User",
-            "id": "interface-User-9c7e5f1bbbab702cb032307d130876cb68969b0cd4eedef32a0c8cad8081a54e5f8f577ed6ad4539c1b99a1d246cb34031d198c2ea8eba440e64e91b14f01fdc",
+            "id": "interface-User-dcc5c3137cd472dd0002d85b562efd23162e3eff53ca4438a6251e6c46e3b8299076255380d1d42f386510cb6f2cbaab49fa5b5f253be459cdc3869428c5c400",
             "file": "src/stories/User.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface User {}\n",
+            "sourceCode": "export interface User {}\r\n",
             "properties": [],
             "indexSignatures": [],
             "methods": []
@@ -481,7 +481,7 @@
         },
         {
             "name": "RegisterService",
-            "id": "injectable-RegisterService-4ee28a14a7de6fdce191da586862efe48c595c467a9af8e4f76b84dbe2786374aebd8bba12f8cdbaa4429fa1cdc7dcca62694819e748140950207ef39d6b7c4d",
+            "id": "injectable-RegisterService-2fd8cce0049f4775f92ce171bbd3ef18a48ed6ec80c805659fe4d266dc68f87221b9a2cbc4a231297568f26c4e7fdea918e8ee9b888696f8981715156741a069",
             "file": "src/app/shared/services/register/register.service.ts",
             "properties": [
                 {
@@ -563,7 +563,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { HttpClient } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { User, UserResponse } from '@app/shared/models/user.interface';\nimport { Observable, throwError } from 'rxjs';\nimport { map, catchError } from 'rxjs/operators';\nimport { environment } from 'src/environments/environment';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class RegisterService {\n  private headers = {'content-type': 'application/json'}\n\n  constructor(private http: HttpClient) { }\n\n  registerUser(user: User){\n    const body = {\n      email: user.email,\n      password: user.password,\n    };\n\n    return this.http\n      .post<any>(`${environment.API_URL}/user/createUser`, JSON.stringify(body), {\n        headers: this.headers,\n      })\n      .pipe(\n        catchError((err) => this.handleError(err))\n      );\n  }\n\n\n  private handleError(err: any): Observable<never> {\n    let errorMessage = 'An error ocurrend while retrienving data';\n    if (err) errorMessage = `Error: Code ${err.message} `;\n    window.alert(errorMessage);\n    return throwError(errorMessage);\n  }\n}\n",
+            "sourceCode": "import { HttpClient } from '@angular/common/http';\r\nimport { Injectable } from '@angular/core';\r\nimport { User, UserResponse } from '@app/shared/models/user.interface';\r\nimport { Observable, throwError } from 'rxjs';\r\nimport { map, catchError } from 'rxjs/operators';\r\nimport { environment } from 'src/environments/environment';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class RegisterService {\r\n  private headers = {'content-type': 'application/json'}\r\n\r\n  constructor(private http: HttpClient) { }\r\n\r\n  registerUser(user: User){\r\n    const body = {\r\n      email: user.email,\r\n      password: user.password,\r\n    };\r\n\r\n    return this.http\r\n      .post<any>(`${environment.API_URL}/user/createUser`, JSON.stringify(body), {\r\n        headers: this.headers,\r\n      })\r\n      .pipe(\r\n        catchError((err) => this.handleError(err))\r\n      );\r\n  }\r\n\r\n\r\n  private handleError(err: any): Observable<never> {\r\n    let errorMessage = 'An error ocurrend while retrienving data';\r\n    if (err) errorMessage = `Error: Code ${err.message} `;\r\n    window.alert(errorMessage);\r\n    return throwError(errorMessage);\r\n  }\r\n}\r\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -594,7 +594,7 @@
         },
         {
             "name": "RolesService",
-            "id": "injectable-RolesService-4f1770b330b9408e8d797b5f0aef8c557fc363d87c09058df3ea343ba450618c7e741a90a05efa0e0b1f0dca6cd57668a0cb9863cb9c9045e717950dc04c62bc",
+            "id": "injectable-RolesService-d7b0a1d0a79d7ffe7640612524bb7b3aed541795b117a7f3c8159a942df550809e75ae46ec0f208cb5b29131412715269d1c9944211265b7697cff287e43db9c",
             "file": "src/app/shared/services/roles/roles.service.ts",
             "properties": [
                 {
@@ -658,7 +658,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { Roles } from './../../models/roles.interface';\r\nimport { HttpClient } from '@angular/common/http';\r\nimport { Injectable } from '@angular/core';\r\nimport { Observable, throwError } from 'rxjs';\r\nimport { map, catchError } from 'rxjs/operators';\r\nimport { environment } from 'src/environments/environment';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class RolesService {\r\n\r\n  private headers = {'content-type': 'application/json'}\r\n\r\n  constructor(private http: HttpClient) { }\r\n\r\n  getAllRoles(){\r\n    return this.http\r\n    .get<Roles[]>(`${environment.API_URL}/roles/getAllRoles`, {\r\n      headers: this.headers\r\n    })\r\n    .pipe(\r\n      catchError((err) => this.handleError(err))\r\n    );\r\n  }\r\n\r\n  private handleError(err: any): Observable<never> {\r\n    let errorMessage = 'An error ocurrend while retrienving data';\r\n    if (err) errorMessage = `Error: Code ${err.message} `;\r\n    window.alert(errorMessage);\r\n    return throwError(errorMessage);\r\n  }\r\n}\r\n",
+            "sourceCode": "import { Roles } from './../../models/roles.interface';\nimport { HttpClient } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { Observable, throwError } from 'rxjs';\nimport { map, catchError } from 'rxjs/operators';\nimport { environment } from 'src/environments/environment';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class RolesService {\n\n  private headers = {'content-type': 'application/json'}\n\n  constructor(private http: HttpClient) { }\n\n  getAllRoles(){\n    return this.http\n    .get<Roles[]>(`${environment.API_URL}/roles/getAllRoles`, {\n      headers: this.headers\n    })\n    .pipe(\n      catchError((err) => this.handleError(err))\n    );\n  }\n\n  private handleError(err: any): Observable<never> {\n    let errorMessage = 'An error ocurrend while retrienving data';\n    if (err) errorMessage = `Error: Code ${err.message} `;\n    window.alert(errorMessage);\n    return throwError(errorMessage);\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -875,7 +875,7 @@
         },
         {
             "name": "UserService",
-            "id": "injectable-UserService-88df6ad0de45a31e18cfc98c28499cc51629292f38e370a350ba7ccd54df2203ae2b116c0bda606d5e0d0d27f259ee28514f760cf45f7bb0f434b42d11774206",
+            "id": "injectable-UserService-67a96279ca1b369a34c222ee3aeec539b6adf43dc7dabc2b6f526965962a459fc6133881f41205c59cb5e0804aa61520807285330f37113157bdd8cac5b93b4d",
             "file": "src/app/shared/services/user/user.service.ts",
             "properties": [
                 {
@@ -957,7 +957,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { User, UserResponse } from '@shared/models/user.interface';\r\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\r\nimport { Injectable } from '@angular/core';\r\nimport { Observable, throwError } from 'rxjs';\r\nimport { map, catchError } from 'rxjs/operators';\r\nimport { environment } from 'src/environments/environment';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class UserService {\r\n\r\n  private headers = {'content-type': 'application/json'}\r\n\r\n  constructor(private http: HttpClient) { }\r\n\r\n  registerUser(data: User){\r\n\r\n    let HTTPOptions:Object = {\r\n\r\n      headers: new HttpHeaders({\r\n          'Content-Type': 'application/json'\r\n      }),\r\n      responseType: 'text'\r\n   }\r\n\r\n    const body = {\r\n      email: data.email,\r\n      password: data.password,\r\n      id_role: data.id_role\r\n    };\r\n\r\n    return this.http\r\n      .post<any>(`${environment.API_URL}/user/createUser`, JSON.stringify(body), HTTPOptions)\r\n      .pipe(\r\n        map((res: any) => {\r\n          return res;\r\n        }),\r\n        catchError((err) => this.handleError(err))\r\n      );\r\n  }\r\n\r\n  private handleError(err: any): Observable<never> {\r\n    let errorMessage = 'An error ocurrend while retrienving data';\r\n    if (err) errorMessage = `Error: Code ${err.message} `;\r\n    window.alert(errorMessage);\r\n    return throwError(errorMessage);\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { User, UserResponse } from '@shared/models/user.interface';\nimport { HttpClient, HttpHeaders } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { Observable, throwError } from 'rxjs';\nimport { map, catchError } from 'rxjs/operators';\nimport { environment } from 'src/environments/environment';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class UserService {\n\n  private headers = {'content-type': 'application/json'}\n\n  constructor(private http: HttpClient) { }\n\n  registerUser(data: User){\n\n    let HTTPOptions:Object = {\n\n      headers: new HttpHeaders({\n          'Content-Type': 'application/json'\n      }),\n      responseType: 'text'\n   }\n\n    const body = {\n      email: data.email,\n      password: data.password,\n      id_role: data.id_role\n    };\n\n    return this.http\n      .post<any>(`${environment.API_URL}/user/createUser`, JSON.stringify(body), HTTPOptions)\n      .pipe(\n        map((res: any) => {\n          return res;\n        }),\n        catchError((err) => this.handleError(err))\n      );\n  }\n\n  private handleError(err: any): Observable<never> {\n    let errorMessage = 'An error ocurrend while retrienving data';\n    if (err) errorMessage = `Error: Code ${err.message} `;\n    window.alert(errorMessage);\n    return throwError(errorMessage);\n  }\n\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -1045,7 +1045,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-4ef205c97a334c309aa4001c8ab4a6d9571dcae18d0e85aaf0d367467ab5d3a9f13ab3573726f1fcb409bc9b49894dadfb80b1bbe1b6ba7041455ad9d4922004",
+            "id": "component-ButtonComponent-8ceaf520f96e5437b08eeda244d84efb29effe62ddca4fc38eaa229085c2a1126c5715e61445bae741505aca1e4d377b350cb05fadd1dc45d9b2bbf7527029f1",
             "file": "src/stories/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1078,15 +1078,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 711,
-                            "end": 724,
+                            "pos": 747,
+                            "end": 761,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 712,
-                                "end": 720,
+                                "pos": 748,
+                                "end": 756,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -1146,11 +1146,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'storybook-button',\r\n  template: ` <button\r\n    type=\"button\"\r\n    (click)=\"onClick.emit($event)\"\r\n    [ngClass]=\"classes\"\r\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\r\n  >\r\n    {{ label }}\r\n  </button>`,\r\n  styleUrls: ['./button.css'],\r\n})\r\nexport default class ButtonComponent {\r\n  /**\r\n   * Is this the principal call to action on the page?\r\n   */\r\n  @Input()\r\n  primary = false;\r\n\r\n  /**\r\n   * What background color to use\r\n   */\r\n  @Input()\r\n  backgroundColor?: string;\r\n\r\n  /**\r\n   * How large should the button be?\r\n   */\r\n  @Input()\r\n  size: 'small' | 'medium' | 'large' = 'medium';\r\n\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input()\r\n  label = 'Button';\r\n\r\n  /**\r\n   * Optional click handler\r\n   */\r\n  @Output()\r\n  onClick = new EventEmitter<Event>();\r\n\r\n  public get classes(): string[] {\r\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\r\n\r\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "data": ".storybook-button {\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  font-weight: 700;\r\n  border: 0;\r\n  border-radius: 3em;\r\n  cursor: pointer;\r\n  display: inline-block;\r\n  line-height: 1;\r\n}\r\n.storybook-button--primary {\r\n  color: white;\r\n  background-color: #1ea7fd;\r\n}\r\n.storybook-button--secondary {\r\n  color: #333;\r\n  background-color: transparent;\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\r\n}\r\n.storybook-button--small {\r\n  font-size: 12px;\r\n  padding: 10px 16px;\r\n}\r\n.storybook-button--medium {\r\n  font-size: 14px;\r\n  padding: 11px 20px;\r\n}\r\n.storybook-button--large {\r\n  font-size: 16px;\r\n  padding: 12px 24px;\r\n}\r\n",
                     "styleUrl": "./button.css"
                 }
             ],
@@ -1276,11 +1276,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ng-container *ngIf=\"{ total: total$ | async,  quantity: quantity$ | async } as dataCart\">\r\n    <ng-container *ngIf=\"dataCart.total\">\r\n        <mat-icon>add_shopping_cart</mat-icon>\r\n        {{ dataCart.total | currency}}\r\n        ({{ dataCart.quantity }})\r\n    </ng-container>\r\n</ng-container>"
+            "templateData": "<ng-container *ngIf=\"{ total: total$ | async,  quantity: quantity$ | async } as dataCart\">\n    <ng-container *ngIf=\"dataCart.total\">\n        <mat-icon>add_shopping_cart</mat-icon>\n        {{ dataCart.total | currency}}\n        ({{ dataCart.quantity }})\n    </ng-container>\n</ng-container>"
         },
         {
             "name": "CategoryProductsButtonComponent",
-            "id": "component-CategoryProductsButtonComponent-cbc79c74f0128838875b48a94b1e420aaeb278654baa235850ab7a6bdee19b9465a4755c2c51a98aa1a7374adee5a520fdf91e6891d88c09c5ed88afe23cb8ec",
+            "id": "component-CategoryProductsButtonComponent-23aaf65c07e63535d9ef9c7107c7460fe176ec6792ab9e9811e7dd8318fde0e09134e6b0a2ea51af0e20d760bb1781918c9be2b52e164d53fe3dfb2c3e17e2ab",
             "file": "src/app/shared/components/header/category-products-button/category-products-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1318,7 +1318,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit, ViewChild } from '@angular/core';\n\n@Component({\n  selector: 'app-category-products-button',\n  templateUrl: './category-products-button.component.html',\n  styleUrls: ['./category-products-button.component.scss']\n})\n\nexport class CategoryProductsButtonComponent implements OnInit {\n  \n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import { Component, OnInit, ViewChild } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-category-products-button',\r\n  templateUrl: './category-products-button.component.html',\r\n  styleUrls: ['./category-products-button.component.scss']\r\n})\r\n\r\nexport class CategoryProductsButtonComponent implements OnInit {\r\n  \r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1338,11 +1338,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<button mat-button [matMenuTriggerFor]=\"menu\">Menu</button>\n<mat-menu #menu=\"matMenu\">\n  <button mat-menu-item [routerLink]=\"['products']\">\n    <mat-icon>store</mat-icon> Products\n  </button>\n</mat-menu>\n"
+            "templateData": "<button mat-button [matMenuTriggerFor]=\"menu\">Menu</button>\r\n<mat-menu #menu=\"matMenu\">\r\n  <button mat-menu-item [routerLink]=\"['products']\">\r\n    <mat-icon>store</mat-icon> Products\r\n  </button>\r\n</mat-menu>\r\n"
         },
         {
             "name": "CheckoutComponent",
-            "id": "component-CheckoutComponent-62b6fb769105cee906047e8413b38371e240fea775ef2c7f7290898cf211fa8c9d1f511a10cf200fbd1048502a2bac7ac5bf9d1b416af80b55dbed6c246a45e3",
+            "id": "component-CheckoutComponent-f0515bbe48fc05cec8ed511bf1a63b56a7e058ba675393bff5daa0b900baece5aee564a292e2e18d1072415034c5b1bc3ac1d188a18e2bfe71e4a46e94fef614",
             "file": "src/app/views/checkout/checkout.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1363,7 +1363,7 @@
             "propertiesClass": [
                 {
                     "name": "model",
-                    "defaultValue": "{\r\n    name: '',\r\n    store: '',\r\n    shippingAddress: '',\r\n    city: ''\r\n  }",
+                    "defaultValue": "{\n    name: '',\n    store: '',\n    shippingAddress: '',\n    city: ''\n  }",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
@@ -1419,7 +1419,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-checkout',\r\n  templateUrl: './checkout.component.html',\r\n  styleUrls: ['./checkout.component.scss']\r\n})\r\nexport class CheckoutComponent implements OnInit {\r\n  model = {\r\n    name: '',\r\n    store: '',\r\n    shippingAddress: '',\r\n    city: ''\r\n  }\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n  onPickupOrDelivery(value: boolean): void {\r\n    console.log(value);\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-checkout',\n  templateUrl: './checkout.component.html',\n  styleUrls: ['./checkout.component.scss']\n})\nexport class CheckoutComponent implements OnInit {\n  model = {\n    name: '',\n    store: '',\n    shippingAddress: '',\n    city: ''\n  }\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n  onPickupOrDelivery(value: boolean): void {\n    console.log(value);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1439,11 +1439,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div class=\"container\">\r\n    <form action=\"\">\r\n        <mat-form-field class=\"form__element\">\r\n            <input type=\"text\"\r\n            matInput\r\n            placeholder=\"\"\r\n            required\r\n            [(ngModel)]=\"model.name\"\r\n            name=\"name\"\r\n            #name=\"ngModel\"\r\n            >\r\n            <mat-error *ngIf=\"!name.valid || name.pristine\">\r\n                Name is required\r\n            </mat-error>        \r\n        </mat-form-field>\r\n        <mat-radio-group class=\"form__element\">\r\n            <p>Choose an option:</p>\r\n            <mat-radio-button color=\"primary\"\r\n            value=\"pickup\"\r\n            (change)=\"onPickupOrDelivery(false)\">\r\n            Pickup</mat-radio-button>\r\n            <mat-radio-button \r\n            value=\"\"\r\n            (change)=\"onPickupOrDelivery(true)\">\r\n            Delivery</mat-radio-button>\r\n        </mat-radio-group>\r\n    </form>\r\n</div>"
+            "templateData": "<div class=\"container\">\n    <form action=\"\">\n        <mat-form-field class=\"form__element\">\n            <input type=\"text\"\n            matInput\n            placeholder=\"\"\n            required\n            [(ngModel)]=\"model.name\"\n            name=\"name\"\n            #name=\"ngModel\"\n            >\n            <mat-error *ngIf=\"!name.valid || name.pristine\">\n                Name is required\n            </mat-error>        \n        </mat-form-field>\n        <mat-radio-group class=\"form__element\">\n            <p>Choose an option:</p>\n            <mat-radio-button color=\"primary\"\n            value=\"pickup\"\n            (change)=\"onPickupOrDelivery(false)\">\n            Pickup</mat-radio-button>\n            <mat-radio-button \n            value=\"\"\n            (change)=\"onPickupOrDelivery(true)\">\n            Delivery</mat-radio-button>\n        </mat-radio-group>\n    </form>\n</div>"
         },
         {
             "name": "FooterComponent",
-            "id": "component-FooterComponent-6c290628b84a1abe1bdfb878464bc2b706fefca858c51621202ab34ffddd486d19c7b04ea6e2c5d71d1bb1dffcb9099de70b3a4f92b6e5c31ebf472a97986eb5",
+            "id": "component-FooterComponent-372883ecd9ce67b24222ea4f41d0dc7bf97cc8b169ea0dccb7355cbd8de599ffa033c7013c0a3d1f9a1372479afaf5ad997085814365923159b5fcb7fc9b4e3f",
             "file": "src/app/shared/components/footer/footer.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1481,7 +1481,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-footer',\r\n  templateUrl: './footer.component.html',\r\n  styleUrls: ['./footer.component.scss']\r\n})\r\nexport class FooterComponent implements OnInit {\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n}\r\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-footer',\n  templateUrl: './footer.component.html',\n  styleUrls: ['./footer.component.scss']\n})\nexport class FooterComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1505,7 +1505,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-a557eec14f72c438a8033301f4d6ce023e0a1844a3b06ec2b38794a612acc31735ae78a5ee10071b230c8c20d699eb914554e69d07ade54adb371da8efb464cc",
+            "id": "component-HeaderComponent-bda17aa3451a9f731685153f2587877b8267c32007f05e7abad3581336e6bc02346a1b660e8c69c4d90b4526b6e047b3ac1f4246252c9dc83985c9148aab5e97",
             "file": "src/stories/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1566,11 +1566,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { User } from './User';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            primary\n            size=\"small\"\n            primary=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\nimport { User } from './User';\r\n\r\n@Component({\r\n  selector: 'storybook-header',\r\n  template: `<header>\r\n    <div class=\"wrapper\">\r\n      <div>\r\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <g fill=\"none\" fillRule=\"evenodd\">\r\n            <path\r\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\r\n              fill=\"#FFF\"\r\n            />\r\n            <path\r\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\r\n              fill=\"#555AB9\"\r\n            />\r\n            <path\r\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\r\n              fill=\"#91BAF8\"\r\n            />\r\n          </g>\r\n        </svg>\r\n        <h1>Acme</h1>\r\n      </div>\r\n      <div>\r\n        <div *ngIf=\"user\">\r\n          <span class=\"welcome\">\r\n            Welcome, <b>{{ user.name }}</b\r\n            >!\r\n          </span>\r\n          <storybook-button\r\n            *ngIf=\"user\"\r\n            size=\"small\"\r\n            (onClick)=\"onLogout.emit($event)\"\r\n            label=\"Log out\"\r\n          ></storybook-button>\r\n        </div>\r\n        <div *ngIf=\"!user\">\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            size=\"small\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onLogin.emit($event)\"\r\n            label=\"Log in\"\r\n          ></storybook-button>\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            primary\r\n            size=\"small\"\r\n            primary=\"true\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onCreateAccount.emit($event)\"\r\n            label=\"Sign up\"\r\n          ></storybook-button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </header>`,\r\n  styleUrls: ['./header.css'],\r\n})\r\nexport default class HeaderComponent {\r\n  @Input()\r\n  user: User | null = null;\r\n\r\n  @Output()\r\n  onLogin = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onLogout = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onCreateAccount = new EventEmitter<Event>();\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n\n.welcome {\n  color: #333;\n  font-size: 14px;\n  margin-right: 10px;\n}\n",
+                    "data": ".wrapper {\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\r\n  padding: 15px 20px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\nsvg {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\nh1 {\r\n  font-weight: 900;\r\n  font-size: 20px;\r\n  line-height: 1;\r\n  margin: 6px 0 6px 10px;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\nbutton + button {\r\n  margin-left: 10px;\r\n}\r\n\r\n.welcome {\r\n  color: #333;\r\n  font-size: 14px;\r\n  margin-right: 10px;\r\n}\r\n",
                     "styleUrl": "./header.css"
                 }
             ],
@@ -1921,7 +1921,7 @@
         },
         {
             "name": "PageComponent",
-            "id": "component-PageComponent-7126d8c2607c946741c651482413b43feb72b2d63cac9d3ac173fde206a5e635eb4cdbf7ca7ac9327c7d4d05cf7ef619144c34c11609ad677081d0ee4e855064",
+            "id": "component-PageComponent-1fc7c24c98b4f0b0f413d91f5a6126f11ad55647457f5a7f372b7f83fe8ecd6dbe67b5ca4b826ed20b9bfbc04d5606b15f82a203b1311f98b18bd28ec9f4fc7c",
             "file": "src/stories/page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1989,11 +1989,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { User } from './User';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { User } from './User';\r\n\r\n@Component({\r\n  selector: 'storybook-page',\r\n  template: `<article>\r\n    <storybook-header\r\n      [user]=\"user\"\r\n      (onLogout)=\"doLogout()\"\r\n      (onLogin)=\"doLogin()\"\r\n      (onCreateAccount)=\"doCreateAccount()\"\r\n    ></storybook-header>\r\n    <section>\r\n      <h2>Pages in Storybook</h2>\r\n      <p>\r\n        We recommend building UIs with a\r\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\r\n          <strong>component-driven</strong>\r\n        </a>\r\n        process starting with atomic components and ending with pages.\r\n      </p>\r\n      <p>\r\n        Render pages with mock data. This makes it easy to build and review page states without\r\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\r\n        in Storybook:\r\n      </p>\r\n      <ul>\r\n        <li>\r\n          Use a higher-level connected component. Storybook helps you compose such data from the\r\n          \"args\" of child component stories\r\n        </li>\r\n        <li>\r\n          Assemble data in the page component from your services. You can mock these services out\r\n          using Storybook.\r\n        </li>\r\n      </ul>\r\n      <p>\r\n        Get a guided tutorial on component-driven development at\r\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\r\n          Storybook tutorials\r\n        </a>\r\n        . Read more in the\r\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\r\n        .\r\n      </p>\r\n      <div class=\"tip-wrapper\">\r\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\r\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <g fill=\"none\" fillRule=\"evenodd\">\r\n            <path\r\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\r\n              id=\"a\"\r\n              fill=\"#999\"\r\n            />\r\n          </g>\r\n        </svg>\r\n        Viewports addon in the toolbar\r\n      </div>\r\n    </section>\r\n  </article>`,\r\n  styleUrls: ['./page.css'],\r\n})\r\nexport default class PageComponent {\r\n  user: User | null = null;\r\n\r\n  doLogout() {\r\n    this.user = null;\r\n  }\r\n\r\n  doLogin() {\r\n    this.user = { name: 'Jane Doe' };\r\n  }\r\n\r\n  doCreateAccount() {\r\n    this.user = { name: 'Jane Doe' };\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nsection h2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nsection p {\n  margin: 1em 0;\n}\n\nsection a {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nsection ul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nsection li {\n  margin-bottom: 8px;\n}\n\nsection .tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\nsection .tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\nsection .tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\nsection .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "data": "section {\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  font-size: 14px;\r\n  line-height: 24px;\r\n  padding: 48px 20px;\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  color: #333;\r\n}\r\n\r\nsection h2 {\r\n  font-weight: 900;\r\n  font-size: 32px;\r\n  line-height: 1;\r\n  margin: 0 0 4px;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\nsection p {\r\n  margin: 1em 0;\r\n}\r\n\r\nsection a {\r\n  text-decoration: none;\r\n  color: #1ea7fd;\r\n}\r\n\r\nsection ul {\r\n  padding-left: 30px;\r\n  margin: 1em 0;\r\n}\r\n\r\nsection li {\r\n  margin-bottom: 8px;\r\n}\r\n\r\nsection .tip {\r\n  display: inline-block;\r\n  border-radius: 1em;\r\n  font-size: 11px;\r\n  line-height: 12px;\r\n  font-weight: 700;\r\n  background: #e7fdd8;\r\n  color: #66bf3c;\r\n  padding: 4px 12px;\r\n  margin-right: 10px;\r\n  vertical-align: top;\r\n}\r\n\r\nsection .tip-wrapper {\r\n  font-size: 13px;\r\n  line-height: 20px;\r\n  margin-top: 40px;\r\n  margin-bottom: 40px;\r\n}\r\n\r\nsection .tip-wrapper svg {\r\n  display: inline-block;\r\n  height: 12px;\r\n  width: 12px;\r\n  margin-right: 4px;\r\n  vertical-align: top;\r\n  margin-top: 3px;\r\n}\r\n\r\nsection .tip-wrapper svg path {\r\n  fill: #1ea7fd;\r\n}\r\n",
                     "styleUrl": "./page.css"
                 }
             ],
@@ -2596,13 +2596,13 @@
         },
         {
             "name": "CheckoutModule",
-            "id": "module-CheckoutModule-eb26bfc5758e82da8499357b37ea091541a153d3b299d589e458954fcfe40b7982d12458c77a895583cea491fac97e77603777362266a7aa33052c370216d002",
+            "id": "module-CheckoutModule-e4ef0c40377c771d5018396b55d38825df890e74af72e2b01b5c53ad21fd7fdc9b3a3247f3cad2ebd7e95d7882c03b85bae62ac289f11ae93354eeffb31eec92",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/views/checkout/checkout.module.ts",
             "methods": [],
-            "sourceCode": "import { MaterialModule } from './../../material/material.module';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { NgModule } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { CheckoutRoutingModule } from './checkout-routing.module';\r\nimport { CheckoutComponent } from './checkout.component';\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    CheckoutComponent\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n    CheckoutRoutingModule,\r\n    FormsModule,\r\n    MaterialModule\r\n  ]\r\n})\r\nexport class CheckoutModule { }\r\n",
+            "sourceCode": "import { MaterialModule } from './../../material/material.module';\nimport { FormsModule } from '@angular/forms';\nimport { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { CheckoutRoutingModule } from './checkout-routing.module';\nimport { CheckoutComponent } from './checkout.component';\n\n\n@NgModule({\n  declarations: [\n    CheckoutComponent\n  ],\n  imports: [\n    CommonModule,\n    CheckoutRoutingModule,\n    FormsModule,\n    MaterialModule\n  ]\n})\nexport class CheckoutModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -2643,13 +2643,13 @@
         },
         {
             "name": "CheckoutRoutingModule",
-            "id": "module-CheckoutRoutingModule-c9263ef8910724593f6a5504b4d8e92e36c8509397472d91c461bbcbd25bff01e8fa329173316247cf102db26e3a0f8961cef2d53849643c2e965caee690b8bb",
+            "id": "module-CheckoutRoutingModule-16ac09dc1dbd02291845fa738ba70953825938f8118e39b8ea1fff115e42920525b30252dee06d266a02fe010679efd3a1c11b5ddda3efa82d944364724e2bac",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/views/checkout/checkout-routing.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { CheckoutComponent } from './checkout.component';\r\n\r\nconst routes: Routes = [{ path: '', component: CheckoutComponent }];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class CheckoutRoutingModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\nimport { CheckoutComponent } from './checkout.component';\n\nconst routes: Routes = [{ path: '', component: CheckoutComponent }];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule]\n})\nexport class CheckoutRoutingModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -2963,7 +2963,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\r\n  production: true\r\n}"
+                "defaultValue": "{\n  production: true\n}"
             },
             {
                 "name": "environment",
@@ -3073,7 +3073,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<Button>",
-                "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+                "defaultValue": "(args: Button) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -3083,7 +3083,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<Header>",
-                "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+                "defaultValue": "(args: Header) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -3093,7 +3093,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<Page>",
-                "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+                "defaultValue": "(args: Page) => ({\r\n  props: args,\r\n})"
             }
         ],
         "functions": [],
@@ -3109,7 +3109,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\r\n  production: true\r\n}"
+                    "defaultValue": "{\n  production: true\n}"
                 }
             ],
             "src/environments/environment.ts": [
@@ -3185,7 +3185,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<Button>",
-                    "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+                    "defaultValue": "(args: Button) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/stories/Header.stories.ts": [
@@ -3217,7 +3217,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<Header>",
-                    "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+                    "defaultValue": "(args: Header) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/stories/Page.stories.ts": [
@@ -3249,7 +3249,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<Page>",
-                    "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+                    "defaultValue": "(args: Page) => ({\r\n  props: args,\r\n})"
                 }
             ]
         },
