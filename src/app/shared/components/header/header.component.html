@@ -1,5 +1,37 @@
 <mat-toolbar color="primary">
-     <span>Store!!</span>
-     <app-category-products-button></app-category-products-button>
-     <app-cart class="spacer"></app-cart>
+  <mat-toolbar-row>
+    <span>Store!!</span>
+
+    <button mat-button [matMenuTriggerFor]="menu">COMICS</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['products']">
+        <mat-icon>store</mat-icon> Products
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu">MANGAS</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['products']">
+        <mat-icon>store</mat-icon> Products
+      </button>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="menu">FIGURES</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['products']">
+        <mat-icon>store</mat-icon> Products
+      </button>
+    </mat-menu>
+
+    <button mat-button [routerLink]="">REQUEST</button>
+
+    <span class="spacer"></span>
+
+    <button mat-button [routerLink]="['/account/login']">
+      Log In
+    </button>
+    <button mat-button [routerLink]="['/account/register']">
+      Sign Up
+    </button>
+  </mat-toolbar-row>
 </mat-toolbar>

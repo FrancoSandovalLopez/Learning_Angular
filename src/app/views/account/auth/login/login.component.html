@@ -47,7 +47,10 @@
           </small>
         </div>
 
-        <!-- <a [routerLink]="['/account/register']">Register</a> -->
+        <div>
+          <a type="button" id="forgotPassword" name="forgotPassword" [routerLink]="['/account/forgotPassword']">Forgot Password?</a>
+        </div>
+
         <div class="button">
           <button type="submit" mat-button [disabled]="form.invalid">
             Login
