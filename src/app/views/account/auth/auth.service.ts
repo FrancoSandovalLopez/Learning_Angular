@@ -52,7 +52,7 @@ export class AuthService {
   }
 
   private checkToken(): void {
-    const userToken = JSON.parse(localStorage.getItem('token')!);
+    const userToken = localStorage.getItem('token')!;
     /*
      * IF ISTOKENEXPIRED() RETURN TRUE
      * THAT MEANS THAT THE USER HAS LOGOUT
