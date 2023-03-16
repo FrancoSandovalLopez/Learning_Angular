@@ -3,7 +3,15 @@ import { RolesService } from './../../../shared/services/roles/roles.service';
 import { Roles } from './../../../shared/models/roles.interface';
 import { UserService } from '@shared/services/user/user.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  FormArray,
+  Validators,
+  ValidatorFn,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,11 +20,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
-    Rpassword: new FormControl(''),
-  });
+
+  checkPasswords: ValidatorFn = (
+    control: AbstractControl
+  ): ValidationErrors | null => {
+    const password = this.password;
+    const confirmPassword = this.Rpassword;
+
+    return password?.value === confirmPassword?.value
+      ? null
+      : { notmatched: true };
+  };
+
+  form: FormGroup = new FormGroup(
+    {
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        Validators.maxLength(50),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(50),
+      ]),
+      Rpassword: new FormControl('', [Validators.required]),
+    },
+    { validators: this.checkPasswords }
+  );
 
   //Roles: any = ['Admin','Author', 'Reader']
 
@@ -36,6 +67,7 @@ export class RegisterComponent implements OnInit {
     //this.loadRoles();
   }
 
+  /* SUBMIT REQUEST TO API */
   submit() {
     if (this.form.valid) {
       const userData = {
@@ -46,26 +78,24 @@ export class RegisterComponent implements OnInit {
       //console.log(this.form.value);
       //this.submitEM.emit(this.form.value);
 
-      this.userSvc.registerUser(userData).subscribe((res: any) => console.log(res));
+      this.userSvc
+        .registerUser(userData)
+        .subscribe((res: any) => console.log(res));
     }
   }
 
+  /* CONFIRM VALIDATOR FOR PASSWORD */
+
+  /* GET INPUTS FROM FORM */
   get email() {
     return this.form.get('email');
   }
 
   get password() {
-    return this.form.get('password');
+    return this.form?.get('password');
   }
 
-  get Rpassword(){
-    return this.form.get('Rpassword');
-  }
-
-  loadRoles(){
-    this.rolesSvc
-    .getAllRoles()
-    .pipe(tap((roles: Roles[]) => (this.Roles = roles)))
-    .subscribe();
+  get Rpassword() {
+    return this.form?.get('Rpassword');
   }
 }

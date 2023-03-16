@@ -4,7 +4,6 @@
     <mat-card-content>
       <form [formGroup]="form" name="form" (ngSubmit)="submit()">
         <p>
-          <label for="email">Email</label>
           <mat-form-field>
             <input
               [class.is-invalid]="email?.invalid && email?.touched"

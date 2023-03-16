@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
       }
 
       this.authSvc.login(userData).subscribe(res => console.log('Login'));
-    }
+    }8
   }
 
   get email(){
